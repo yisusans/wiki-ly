@@ -8,8 +8,8 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    binding.pry
     @article = Article.new(article_params)
-
     if @article.save
       @article.state = "unpublished"
       redirect_to @article
@@ -34,5 +34,14 @@ class ArticlesController < ApplicationController
 
   def destroy
   end
-  
+
+  private
+    def article_params
+      params.require(:article).permit(:title, :bibliography)
+    end
+
+    def section_params
+      params.require(:section).permit(:subtitle, :body)
+    end
+
 end

@@ -5,5 +5,6 @@ class Article < ActiveRecord::Base
   has_many :designations
   has_many :edits
   has_many :sections
+  has_many :favorites
 
 end

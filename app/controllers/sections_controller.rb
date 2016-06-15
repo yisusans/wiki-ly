@@ -15,7 +15,7 @@ class SectionsController < ApplicationController
   end
 
   def edit
-
+    @section = Section.find_by(id: params[:id])
   end
 
   def destroy

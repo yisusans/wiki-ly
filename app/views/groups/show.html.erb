@@ -1,9 +1,11 @@
 <h1><%= @group_name %></h1>
 
+<h3>Users:</h3>
 <% @users.each do |member| %>
-  <p><%= member.username %>, <%= member.status %></p>
+  <p><%= member.user.username %>, <%= member.role %></p>
 <%end%>
 
+<h3>Articles:</h3>
 <% @articles.each do |article| %>
   <p><%= article.title %></p>
 <% end %>

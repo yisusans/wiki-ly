@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+include ApplicationHelper
 
   def index
     @groups = Group.all
@@ -6,19 +7,19 @@ class GroupsController < ApplicationController
   end
 
   def new
+    redirect_to_login
     @group = Group.new
   end
 
   def create
     @group = Group.new(group_params)
-
     if @group.save
-      @membership = Membership.new(current_user.id)
-      @membership.role = "admin"
-      @membership.group_id = @group.id
+      @membership = Membership.create( user_id: current_user.id,
+                                       role: "admin",
+                                       group_id: @group.id )
       redirect_to @group
     else
-      @errors = @group.errors.full_messages + @membership.errors.full_messages
+      @errors = @group.errors.full_messages
       render '/groups/new'
     end
   end

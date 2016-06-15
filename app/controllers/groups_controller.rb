@@ -11,14 +11,23 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
+
     if @group.save
+      @membership = Membership.new(membership_params)
+      @membership.role = "admin"
+      @membership.group_id = @group.id
       redirect_to @group
     else
-      @errors = @group.errors.full_messages
-
+      @errors = @group.errors.full_messages + @membership.errors.full_messages
+      render '/groups/new'
+    end
   end
 
   def show
+    @group = Group.find_by(id: params[:id])
+    if @group
+      @group.name
+      @
   end
 
   def edit
@@ -30,5 +39,8 @@ private
     params.require(:group).permit(:name)
   end
 
+  def membership_params
+    params.require(:membership).permit(:user_id)
+  end
 end
 

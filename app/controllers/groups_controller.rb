@@ -13,7 +13,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
 
     if @group.save
-      @membership = Membership.new(membership_params)
+      @membership = Membership.new(current_user.id)
       @membership.role = "admin"
       @membership.group_id = @group.id
       redirect_to @group
@@ -26,8 +26,13 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find_by(id: params[:id])
     if @group
-      @group.name
-      @
+      @group_name = @group.name
+      @users = @group.memberships
+      @articles = @group.articles
+      render '/groups/show'
+    else
+      redirect '/'
+    end
   end
 
   def edit
@@ -39,8 +44,8 @@ private
     params.require(:group).permit(:name)
   end
 
-  def membership_params
-    params.require(:membership).permit(:user_id)
-  end
+  # def membership_params
+  #   params.require(:membership).permit(:user_id)
+  # end
 end
 

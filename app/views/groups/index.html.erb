@@ -1,1 +1,9 @@
-group index page
+<% if @groups %>
+  <% @groups.each do |group|%>
+
+    <div>
+      <%= group.name %>
+    </div>
+
+  <%end%>
+<%end%>

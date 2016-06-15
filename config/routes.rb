@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
 
   resources :users, :except => [:index]
+  resources :groups
+  resources :articles
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-  resources :groups
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

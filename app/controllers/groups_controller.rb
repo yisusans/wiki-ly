@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+include ApplicationHelper
 
   def index
     @groups = Group.all
@@ -6,6 +7,7 @@ class GroupsController < ApplicationController
   end
 
   def new
+    redirect_to_login
     @group = Group.new
   end
 

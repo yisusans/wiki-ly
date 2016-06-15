@@ -1,0 +1,8 @@
+<h2><%= @article.title %></h2>>
+
+<% @article.sections.each do |section| %>
+  <div><%= section.subtitle %></div>
+  <div><%= section.body %></div>
+<% end %>
+
+<%= @article.bibliography %>

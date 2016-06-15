@@ -21,11 +21,18 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find_by(id: params[:id])
+    @user = @article.writer.username
     if @article
       render 'show'
     else
       redirect_to '/'
     end
+  end
+
+  def edit
+  end
+
+  def destroy
   end
   
 end

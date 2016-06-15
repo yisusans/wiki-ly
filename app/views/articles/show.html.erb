@@ -1,8 +1,12 @@
-<h2><%= @article.title %></h2>>
+<h2><%= @article.title %></h2>
 
 <% @article.sections.each do |section| %>
   <div><%= section.subtitle %></div>
   <div><%= section.body %></div>
+
 <% end %>
 
-<%= @article.bibliography %>
+<div><%= @article.bibliography %></div>
+
+<div id="article-author">Added by:</div>
+<div><%=@article.writer.username %></div>

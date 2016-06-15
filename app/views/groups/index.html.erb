@@ -1,9 +1,7 @@
 <% if @groups %>
   <% @groups.each do |group|%>
 
-    <div>
-      <%= group.name %>
-    </div>
+    <div><%= link_to group.name, group_path(group) %></div>
 
   <%end%>
 <%end%>

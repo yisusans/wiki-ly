@@ -42,7 +42,7 @@ include ApplicationHelper
   def destroy
     @group = Group.find_by(id: params[:id])
     @group.delete
-    redirect_to root_path
+    redirect_to '/groups'
   end
 
 private

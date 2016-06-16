@@ -4,4 +4,6 @@ class Section < ActiveRecord::Base
   has_many :footnotes
   has_many :edits
 
+  validates :subtitle, :body, presence: true
+
 end

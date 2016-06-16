@@ -9,11 +9,14 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
 
   resources :users, :except => [:index]
-  resources :groups
-  resources :memberships, only: [:create]
-  resources :articles do
-    resources :tags
+  resources :groups do
+    resources :articles do
+      resources :tags, :only => [:create]
+    end
   end
+
+  resources :memberships, only: [:create]
+
 
   resources :sections, :except => [:index, :show]
 

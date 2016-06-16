@@ -1,21 +1,25 @@
 class ArticlesController < ApplicationController
-  # def index
-  #   @articles = Article.all
-  # end
+include ApplicationHelper
 
   def new
     @article = Article.new
+    @section = Section.new
+    @group = Group.find(params[:group_id])
+    @article.writer_id = current_user.id
+    @article.group_id = @group.id
+    @article.sections << @section
   end
 
   def create
-    binding.pry
     @article = Article.new(article_params)
+    @group = Group.find(params[:group_id])
+    @article.writer_id = current_user.id
+    @article.group_id = @group.id
     if @article.save
-      @article.state = "unpublished"
-      redirect_to @article
+       render '/articles/show'
     else
       @errors = @article.errors.full_messages
-      render 'new'
+      redirect_to @group
     end
   end
 
@@ -24,14 +28,18 @@ class ArticlesController < ApplicationController
     @article = Article.find_by(id: params[:id])
     @tags = @article.tags
     @user = @article.writer.username
+    @group = Group.find_by(id: params[:group_id])
+
     if @article
-      render 'show'
+      render '/articles/show'
     else
-      redirect_to '/'
+      redirect_to @group
     end
   end
 
   def edit
+    @article = Article.find_by(id: params[:id])
+    @article.update(product_params)
   end
 
   def destroy
@@ -43,7 +51,7 @@ class ArticlesController < ApplicationController
     end
 
     def section_params
-      params.require(:section).permit(:subtitle, :body)
+      params.require(:article).permit(:title, :bibliography, section_attributes: [:subtitle, :body])
     end
 
 end

@@ -3,7 +3,13 @@ include ApplicationHelper
 
   def index
     @groups = Group.all
-    render 'index'
+    if params[:search]
+      search = params[:search].downcase
+      capitalize_search = search.capitalize
+      @groups = Group.search(capitalize_search).order("created_at DESC")
+   else
+     @groups = Group.all.order('created_at DESC')
+    end
   end
 
   def new
@@ -12,14 +18,15 @@ include ApplicationHelper
   end
 
   def create
-    @group = Group.new(group_params)
+    capitalize_group = params[:group][:name].downcase.capitalize
+    @group = Group.new(name: capitalize_group)
     if @group.save
       @membership = Membership.create( user_id: current_user.id,
                                        role: "admin",
                                        group_id: @group.id )
       redirect_to @group
     else
-      @errors = @group.errors.full_messages
+      flash[:error] = @group.errors.full_messages
       render '/groups/new'
     end
   end
@@ -42,7 +49,7 @@ include ApplicationHelper
   def destroy
     @group = Group.find_by(id: params[:id])
     @group.delete
-    redirect_to root_path
+    redirect_to '/groups'
   end
 
 private

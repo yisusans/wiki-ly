@@ -12,14 +12,18 @@
   <% if logged_in? %>
     <%= link_to "Log out", logout_path, method: :delete %>
     | <%= link_to current_user.email, user_path(:id => current_user.id) %>
+    | <%= link_to "Create a Group", new_group_path %>
   <% else %>
     | <%= link_to "Login", login_path%>
     | <%= link_to "Register", new_user_path%>
   <% end %>
     | <%= link_to "Home", root_path %>
+    | <%= link_to "Groups", groups_path %>
     </ul>
     </nav>
+    <div class="container">
 <%= yield %>
+</div>
 
 </body>
 </html>

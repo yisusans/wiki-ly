@@ -2,7 +2,7 @@
 
   <%= form_tag("/groups/#{@group.id}/articles/#{@article.id}/tags", method: "post") do %>
     <%= hidden_field_tag(:article_id, value=@article.id)%>
-    <%= text_field_tag :label, params[:tags][:label], placeholder: "tag",class: "form-control input-md tag-field" %>
+    <%= text_field_tag :label, params[:label], placeholder: "tag", class: "form-control input-md tag-field", id: "tag-form-field" %>
     <%= submit_tag "create tag", class: "btn btn-primary" %>
   <% end %>
 

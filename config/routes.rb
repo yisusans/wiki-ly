@@ -15,8 +15,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :memberships, only: [:create]
+  resources :memberships, only: [:create, :show]
 
+  resources :tags, :only => [:show]
 
   resources :sections, :except => [:index, :show]
 

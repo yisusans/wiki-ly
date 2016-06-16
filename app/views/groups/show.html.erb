@@ -7,6 +7,8 @@
     <%= link_to 'delete group', group_path(@group),
             method: :delete,
             data: { confirm: 'Are you sure?'} %>
+  <% elsif !member_already? %>
+    <p><%= link_to 'add article', new_group_article_path(@group) %></p>
   <% end %>
 <% end %>
 
@@ -26,7 +28,7 @@
 <% end %>
 <% end %>
 
-<% if logged_in? && !!member_already? %>
+<% if logged_in? && member_already? %>
   <%= form_tag(memberships_path, method: "post") do %>
     <%= hidden_field_tag(:group_id, value=@group.id)%>
     <%= submit_tag "Join", class: "btn btn-secondary" %>

@@ -23,16 +23,16 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def edit
-    @article = Article.find_by(id: params[:id])
-    @article.update(product_params)
-  end
+  # def edit
+  #   @article = Article.find_by(id: params[:id])
+  #   @article.update(product_params)
+  # end
 
-  def destroy
-    @article = Article.find_by(id: params[:id])
-    @article.delete
-    redirect_to root_path
-  end
+  # def destroy
+  #   @article = Article.find_by(id: params[:id])
+  #   @article.delete
+  #   redirect_to root_path
+  # end
 
   private
     def article_params

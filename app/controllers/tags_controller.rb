@@ -2,13 +2,13 @@ class TagsController < ApplicationController
 
   def create
     @tag = Tag.new(tag_params)
-
+    @article = Article.find_by(id: params[:id])
     if @tag.save
-      @tag = Tag.create( user_id: current_user.id,
-                                       role: "admin",
-                                       group_id: @group.id )
+      @designation = Designation.create(tag_id: @tag.id, article_id: @article.id)
+      redirect_to @article
     else
-
+      @errors = @tags.errors.full_messages
+      render 'tags/new/'
     end
 
   end

@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   resources :users, :except => [:index]
   resources :groups
   resources :memberships, only: [:create]
-  resources :articles
+  resources :articles do
+    resources :tags
+  end
 
   resources :sections, :except => [:index, :show]
 

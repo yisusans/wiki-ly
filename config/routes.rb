@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :users, :except => [:index]
   resources :groups
+  resources :memberships, only: [:create]
   resources :articles
 
   resources :sections, :except => [:index, :show]

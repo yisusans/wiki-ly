@@ -21,5 +21,9 @@
   <p><%= article.title %></p>
 <% end %>
 
-
-
+<% if logged_in? %>
+  <%= form_tag(memberships_path, method: "post") do %>
+    <%= hidden_field_tag(:group_id, value=@group.id)%>
+    <%= submit_tag "Join", class: "btn btn-secondary" %>
+  <% end %>
+<% end %>

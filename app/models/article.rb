@@ -7,4 +7,8 @@ class Article < ActiveRecord::Base
   has_many :sections
   has_many :favorites
 
+	def self.search(search)
+	  where("name LIKE ?", "%#{search}%") 
+	  where("content LIKE ?", "%#{search}%")
+	end
 end

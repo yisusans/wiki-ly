@@ -7,8 +7,6 @@
 <h2>Groups:</h2>
 <% if @groups %>
   <% @groups.each do |group|%>
-
     <div><%= link_to group.name, group_path(group) %></div>
-
   <%end%>
 <%end%>

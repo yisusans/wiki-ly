@@ -8,6 +8,6 @@ class Group < ActiveRecord::Base
   validates :name, presence: true
 
    def self.search(search)
-     where("name LIKE ?", "%#{search}%")
+     where("LOWER(name) LIKE LOWER(?)", "%#{search}%")
    end
 end

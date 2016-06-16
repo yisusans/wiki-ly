@@ -1,0 +1,6 @@
+<div id="new-tag-form">
+  <%= form_for([@article, @tag]) do |f| %>
+    <%= f.text_field :label, placeholder: "tag", class: "form-control input-md tag-field" %>
+    <%= f.submit "create", class: "btn btn-primary" %>
+  <% end %>
+</div>

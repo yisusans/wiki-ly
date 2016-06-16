@@ -1,8 +1,10 @@
 class User < ActiveRecord::Base
   has_secure_password
 
-  validates :email, :username, :password, presence: true, on: :create, on: :update
-  validates :email, :username, uniqueness: true, on: :create, on: :update
+  validates :email, :username, :password, presence: true, on: :create
+  validates :email, :username, :password, presence: true, on: :update
+  validates :email, :username, uniqueness: true, on: :create
+  validates :email, :username, uniqueness: true, on: :update
 
   has_many :articles, {foreign_key: :writer_id}
   has_many :memberships

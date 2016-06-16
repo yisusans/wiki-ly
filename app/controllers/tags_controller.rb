@@ -10,7 +10,6 @@ class TagsController < ApplicationController
       @errors = @tags.errors.full_messages
       render 'tags/new/'
     end
-
   end
 
 

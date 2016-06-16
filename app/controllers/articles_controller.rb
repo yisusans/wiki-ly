@@ -1,15 +1,24 @@
 class ArticlesController < ApplicationController
-  # def index
-  #   @articles = Article.all
-  # end
+include ApplicationHelper
+
+  def index
+    @articles = Article.all
+    if params[:search]
+      @articles = Article.search(params[:search]).order("created_at DESC")
+    else
+      @articles = Article.all.order('created_at DESC')
+    end
+  end
 
   def new
+    redirect_to_login
     @article = Article.new
   end
 
   def create
-    binding.pry
     @article = Article.new(article_params)
+    @article.writer_id = current_user.id
+    @article.group_id = #this needs to be filled in
     if @article.save
       @article.state = "unpublished"
       redirect_to @article

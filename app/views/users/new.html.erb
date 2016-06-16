@@ -1,16 +1,16 @@
-<h1>Register</h1>
+<h1>Register:</h1>
 
 <%= render 'errors' %>
 
-<div class="row">
+<div class="form-group">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
 
-      <%= f.text_field :username, placeholder: "username" %>
-      <%= f.email_field :email, placeholder: "example@email.com" %>
-      <%= f.password_field :password, placeholder: "password" %>
+      <p><%= f.text_field :username, placeholder: "username", class: "form-control" %></p>
+      <p><%= f.email_field :email, placeholder: "example@email.com", class: "form-control"  %></p>
+      <p><%= f.password_field :password, placeholder: "password", class: "form-control" %></p>
 
-      <%= f.submit "Create my account" %>
+      <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

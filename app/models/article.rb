@@ -7,4 +7,6 @@ class Article < ActiveRecord::Base
   has_many :sections
   has_many :favorites
 
+  validates :title, :bibliography, presence: true
+
 end

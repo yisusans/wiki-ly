@@ -11,4 +11,11 @@ class TagsController < ApplicationController
       render 'tags/new/'
     end
   end
+
+
+  def show
+    @articles = Article.find_by(tag_id: )
+  end
+
+
 end

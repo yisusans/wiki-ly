@@ -3,7 +3,7 @@ class CreateArticles < ActiveRecord::Migration
     create_table :articles do |t|
       t.string :title, null: false
       t.string :bibliography, null: false
-      t.string :state, null: false, default: "unpublished"
+      t.string :state, default: "unpublished", null: false
       t.integer :writer_id, null: false
       t.references :group, null: false
 

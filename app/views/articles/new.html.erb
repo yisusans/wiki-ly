@@ -1,14 +1,20 @@
+
 <h1>Add a new article:</h1>
 
-    <%= form_for @article do |f| %>
-      Title: <%= f.text_field :title %><br />
+<div class="row form-inline">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for [@group, @article] do |article_form| %>
+      Title: <%= article_form.text_field :title %><br />
       
-      <%= fields_for :sections, @article.sections do |section_fields| %>
+      <%= article_form.fields_for @article.sections.first do |section_fields| %>
         Subtitle: <%= section_fields.text_field :subtitle %>
         Body: <%= section_fields.text_field :body %>
       <%end%>
 
-      Bibliography: <%= f.text_area :bibliography %><br />
+      Bibliography: <%= article_form.text_area :bibliography %><br />
 
-      <%= f.submit %>
+      <%= article_form.submit "submit"  %>
+
     <% end %>
+  </div>
+</div>

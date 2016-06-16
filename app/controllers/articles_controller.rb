@@ -1,32 +1,43 @@
 class ArticlesController < ApplicationController
+  include ApplicationHelper
+
   def new
     @article = Article.new
+    @section = Section.new
+    @group = Group.find(params[:group_id])
+    @article.writer_id = current_user.id
+    @article.group_id = @group.id
+    @article.sections << @section
   end
 
   def create
     @article = Article.new(article_params)
+    @group = Group.find(params[:group_id])
+    @article.writer_id = current_user.id
+    @article.group_id = @group.id
+
     if @article.save
-      redirect_to @article
+      render '/articles/show'
     else
       @errors = @article.errors.full_messages
-      render 'new'
+      redirect_to @group
     end
   end
 
   def show
     @article = Article.find_by(id: params[:id])
-    @user = @article.writer.username
+    @group = Group.find_by(id: params[:group_id])
     if @article
-      render 'show'
+      render '/articles/show'
     else
-      redirect_to '/'
+      redirect_to @group
     end
   end
 
-  # def edit
-  #   @article = Article.find_by(id: params[:id])
-  #   @article.update(product_params)
-  # end
+  def edit
+    @article = Article.find_by(id: params[:id])
+    @article.update(product_params)
+  end
 
   # def destroy
   #   @article = Article.find_by(id: params[:id])
@@ -38,9 +49,5 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:title, :bibliography, section_attributes: [:subtitle, :body])
     end
-
-    # def section_params
-    #   params.require(:section).permit(:subtitle, :body)
-    # end
 
 end

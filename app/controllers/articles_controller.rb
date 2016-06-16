@@ -1,8 +1,4 @@
 class ArticlesController < ApplicationController
-  # def index
-  #   @articles = Article.all
-  # end
-
   def new
     @article = Article.new
   end
@@ -10,7 +6,6 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      @article.state = "unpublished"
       redirect_to @article
     else
       @errors = @article.errors.full_messages
@@ -29,18 +24,23 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    @article = Article.find_by(id: params[:id])
+    @article.update(product_params)
   end
 
   def destroy
+    @article = Article.find_by(id: params[:id])
+    @article.delete
+    redirect_to root_path
   end
 
   private
     def article_params
-      params.require(:article).permit(:title, :bibliography)
+      params.require(:article).permit(:title, :bibliography, section_attributes: [:subtitle, :body])
     end
 
-    def section_params
-      params.require(:section).permit(:subtitle, :body)
-    end
+    # def section_params
+    #   params.require(:section).permit(:subtitle, :body)
+    # end
 
 end

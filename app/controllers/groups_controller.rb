@@ -27,7 +27,7 @@ include ApplicationHelper
       redirect_to @group
     else
       flash[:error] = @group.errors.full_messages
-      render '/groups/new'
+      redirect_to '/groups/new'
     end
   end
 

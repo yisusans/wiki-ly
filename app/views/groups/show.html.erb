@@ -4,10 +4,9 @@
 
 <% if logged_in? %>
   <% if admin? %>
-<%= link_to 'delete', group_path(@group),
+<%= link_to 'delete group', group_path(@group),
             method: :delete,
             data: { confirm: 'Are you sure?'} %>
-  <p>Pending Memberships: </p>
   <% end %>
 <% end %>
 
@@ -20,6 +19,13 @@
 <% @articles.each do |article| %>
   <p><%= article.title %></p>
 <% end %>
+
+<% if flash %>
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+<% end %>
+
 <% if logged_in? && !!member_already? %>
   <%= form_tag(memberships_path, method: "post") do %>
     <%= hidden_field_tag(:group_id, value=@group.id)%>

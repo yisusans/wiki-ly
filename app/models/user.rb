@@ -11,6 +11,6 @@ class User < ActiveRecord::Base
   has_many :groups, through: :memberships
   has_many :edits, {foreign_key: :editor_id}
   has_many :favorites
-
+  has_many :favorited_articles, through: :favorites, source: :article
 
 end

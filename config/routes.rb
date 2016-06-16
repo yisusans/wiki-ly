@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :memberships, only: [:create, :show]
 
+  resources :tags, :only => [:show]
 
   resources :sections, :except => [:index, :show]
 

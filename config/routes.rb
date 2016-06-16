@@ -17,8 +17,8 @@ Rails.application.routes.draw do
 
   resources :footnotes, :except => [:index, :show]
 
-  post '/favorite_article' => 'favorites#create', as: :favorite
-  delete '/unfavorite_unfavorite' => 'favorites#destroy', as: :unfavorite
+  post 'favorite_article' => 'favorites#create'
+  delete 'unfavorite_article' => 'favorites#destroy'
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'

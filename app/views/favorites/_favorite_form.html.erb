@@ -1,0 +1,12 @@
+<% if @article.is_favorited?(current_user) %>
+  <%= form_for @favorite, method: :delete, url: unfavorite_article_path, :html => {class:"filled-in-fave"} do |f| %>
+    <%= f.hidden_field :article_id, value: @article.id %>
+  <button class="favoriting-button"><i class="fa fa-bookmark-o" class="bookmark" aria-hidden="true"></i></button>
+    <% end %>
+
+  <% else %>
+  <%= form_for :favorite, method: :create, url: favorite_article_path, :html => {class:"unfilled-fave"} do |f| %>
+    <%= f.hidden_field :article_id, value: @article.id %>
+  <button class="favoriting-button"><i class="fa fa-bookmark-o" class="bookmark" aria-hidden="true"></i></button>
+    <%end%>
+<% end %>

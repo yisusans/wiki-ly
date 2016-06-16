@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+
   # def index
   #   @articles = Article.all
   # end
@@ -8,7 +9,6 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    binding.pry
     @article = Article.new(article_params)
     if @article.save
       @article.state = "unpublished"
@@ -22,6 +22,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find_by(id: params[:id])
     @user = @article.writer.username
+    # @favorite = @article.favorites.find_by(user_id: current_user.id, article_id: params[:favorite][:article_id])
     if @article
       render 'show'
     else

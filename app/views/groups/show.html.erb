@@ -4,15 +4,17 @@
 
 <% if logged_in? %>
   <% if admin? %>
-<%= link_to 'delete group', group_path(@group),
+    <%= link_to 'delete group', group_path(@group),
             method: :delete,
             data: { confirm: 'Are you sure?'} %>
+  <% elsif !member_already? %>
+    <p><%= link_to 'add article', new_group_article_path(@group) %></p>
   <% end %>
 <% end %>
 
 <h3>Users:</h3>
 <% @users.each do |member| %>
-  <p><%= member.user.username %>, <%= member.role %></p>
+  <p><%= link_to member.user.username, user_path(member.user) %>, <%= member.role %></p>
 <%end%>
 
 <h3>Articles:</h3>
@@ -26,7 +28,7 @@
 <% end %>
 <% end %>
 
-<% if logged_in? && !!member_already? %>
+<% if logged_in? && member_already? %>
   <%= form_tag(memberships_path, method: "post") do %>
     <%= hidden_field_tag(:group_id, value=@group.id)%>
     <%= submit_tag "Join", class: "btn btn-secondary" %>

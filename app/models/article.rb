@@ -5,7 +5,12 @@ class Article < ActiveRecord::Base
   has_many :designations
   has_many :edits
   has_many :sections
+  accepts_nested_attributes_for :sections
   has_many :favorites
+  has_many :tags, through: :designations
+
+  validates :title, :bibliography, presence: true
+  validates_associated :sections, presence: true
 
   def is_favorited?(current_user)
     !!self.favorites.find_by(user_id: current_user.id)
@@ -16,5 +21,6 @@ class Article < ActiveRecord::Base
   #     favorite.where(user_id == current_user.id && article_id == @article.id)
   #   end
   # end
+
 
 end

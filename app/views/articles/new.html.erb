@@ -6,3 +6,22 @@
   Bibliography : <%= f.text_area :bibliography %><br />
   <%= f.submit %>
 <% end %>
+
+<div class="row form-inline">
+   <div class="col-md-6 col-md-offset-3">
+     <%= form_for [@group, @article] do |article_form| %>
+       Title: <%= article_form.text_field :title, class: "form-control input-md" %><br />
+
+       <%= article_form.fields_for @article.sections.first do |section_fields| %>
+         Subtitle: <%= section_fields.text_field :subtitle, class: "form-control input-md"  %><br />
+         Body: <%= section_fields.text_field :body, class: "form-control input-md"  %><br />
+       <%end%>
+
+       Bibliography: <%= article_form.text_area :bibliography, class: "form-control input-md"  %><br />
+
+       <%= article_form.submit "submit", class: "btn btn-primary"   %>
+
+     <% end %>
+   </div>
+</div>
+

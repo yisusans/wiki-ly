@@ -1,7 +1,7 @@
 module GroupsHelper
 
   def admin?
-    check_for_admin
+    !check_for_admin.empty?
   end
 
   def check_for_admin

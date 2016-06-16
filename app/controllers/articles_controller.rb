@@ -42,10 +42,17 @@ include ApplicationHelper
 
   def edit
     @article = Article.find_by(id: params[:id])
-    @article.update(product_params)
+    @group = @article.group
+  end
+
+  def update
+    # @article.update(params)
   end
 
   def destroy
+    @article = Article.find_by(id: params[:id])
+    @article.destroy
+    redirect_to @article.group
   end
 
   private

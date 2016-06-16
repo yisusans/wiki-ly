@@ -39,7 +39,7 @@ include ApplicationHelper
       @articles = @group.articles
       render '/groups/show'
     else
-      redirect '/'
+      redirect_to '/'
     end
   end
 

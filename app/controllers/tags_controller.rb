@@ -2,7 +2,7 @@ class TagsController < ApplicationController
 
   def create
     @tag = Tag.new(tag_params)
-    @article = Article.find_by(id: params[:id])
+    @article = Article.find_by(id: params[:article_id])
     if @tag.save
       @designation = Designation.create(tag_id: @tag.id, article_id: @article.id)
       redirect_to @article

@@ -20,7 +20,9 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @tag = Tag.new
     @article = Article.find_by(id: params[:id])
+    @tags = @article.tags
     @user = @article.writer.username
     if @article
       render 'show'

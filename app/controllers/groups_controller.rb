@@ -3,7 +3,11 @@ include ApplicationHelper
 
   def index
     @groups = Group.all
-    render 'index'
+    if params[:search]
+      @groups = Group.search(params[:search].downcase).order("created_at DESC")
+    else
+      @groups = Group.all.order('created_at DESC')
+    end
   end
 
   def new

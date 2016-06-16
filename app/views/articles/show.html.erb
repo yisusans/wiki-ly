@@ -10,9 +10,10 @@
 <div id="article-author">Added by:</div>
 <div><%=@article.writer.username %></div>
 
+
+<%= render 'favorites/favorite_form' %>
+
 <div id="article-show-tags-container">
   <%= render '/tags/new_tag' %>
   <%= render '/tags/tags' %>
 </div>
-
-

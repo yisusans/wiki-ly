@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
+
 include ApplicationHelper
+
 
   def new
     @article = Article.new
@@ -28,6 +30,7 @@ include ApplicationHelper
     @article = Article.find_by(id: params[:id])
     @tags = @article.tags
     @user = @article.writer.username
+    # @favorite = @article.favorites.find_by(user_id: current_user.id, article_id: params[:favorite][:article_id])
     @group = Group.find_by(id: params[:group_id])
 
     if @article

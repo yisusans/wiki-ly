@@ -1,0 +1,15 @@
+<% if @article.is_favorited?(current_user) %>
+  <%= form_tag unfavorite_article_path, method: :delete do |f| %>
+    <%= hidden_field_tag :article_id, @article.id %>
+    <p>article is already favorited</p>
+  <button class="favoriting-button"><i class="fa fa-bookmark-o" class="bookmark" aria-hidden="true"></i></button>
+    <% end %>
+
+  <% else %>
+  <%= form_tag favorite_article_path, method: :create do |f| %>
+  <p>not favorited</p>
+    <%= hidden_field_tag :article_id, @article.id %>
+  <button class="favoriting-button"><i class="fa fa-bookmark-o" class="bookmark" aria-hidden="true"></i></button>
+    <%end%>
+<% end %>
+    

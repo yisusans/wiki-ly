@@ -1,3 +1,10 @@
+<%= form_tag(groups_path, :method => "get", id: "search-form") do %>
+ <div class="form-inline">
+ <%= text_field_tag :search, params[:search], placeholder: "Search Groups", class: "form-control input-md" %>
+ <%= submit_tag "Search", class: "btn btn-primary" %>
+ <% end %>
+
+<h2>Groups:</h2>
 <% if @groups %>
   <% @groups.each do |group|%>
 

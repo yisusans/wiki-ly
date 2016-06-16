@@ -4,6 +4,10 @@ class Group < ActiveRecord::Base
   has_many :articles
   has_many :users, through: :memberships
 
+  validates :name, uniqueness: true
   validates :name, presence: true
 
+   def self.search(search)
+     where("name LIKE ?", "%#{search}%")
+   end
 end

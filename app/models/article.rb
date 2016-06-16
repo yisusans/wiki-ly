@@ -5,7 +5,7 @@ class Article < ActiveRecord::Base
   has_many :designations
   has_many :edits
   has_many :sections
-  accepts_nested_attributes_for :sections
+  # accepts_nested_attributes_for :sections
   has_many :favorites
   has_many :tags, through: :designations
 

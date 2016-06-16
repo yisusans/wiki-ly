@@ -5,17 +5,21 @@ class SectionsController < ApplicationController
   end
 
   def create
-    @section = Section.new(section_params)
+    @article = Article.find_by(id: params[:id])
+    @section = @article.sections.new(section_params)
     if @section.save
-      redirect_to @section
+      redirect_to @article
     else
       @errors = @section.errors.full_messages
-      render '/sections/new'
+      render "/articles/#{@article.id}"
     end
   end
 
   def edit
     @section = Section.find_by(id: params[:id])
+  end
+
+  def update
   end
 
   def destroy

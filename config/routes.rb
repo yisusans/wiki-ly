@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   resources :groups
   resources :articles
 
+  resources :sections, :except => [:index, :show]
+
+  resources :footnotes, :except => [:index, :show]
+
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 

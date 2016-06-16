@@ -7,7 +7,7 @@ include ApplicationHelper
                                  user_id: current_user.id,
                                  role: "member")
     if @membership.save
-      flash[:message] = "Thanks for joining #{@group}!"
+      flash[:message] = "Thanks for joining #{@group.name}!"
       redirect_to @group
     else
       flash[:error] = @membership.errors.full_messages

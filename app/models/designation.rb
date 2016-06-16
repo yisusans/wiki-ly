@@ -1,6 +1,7 @@
 class Designation < ActiveRecord::Base
 
-  has_many :tags
-  has_many :articles
+  belongs_to :tag
+  belongs_to :article
 
+  # validates :tags, :articles, presence: true
 end

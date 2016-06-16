@@ -1,6 +1,7 @@
-
-<% form_for([@article, @tag]) do |f| %>
-  <%= f.text_field :label, placeholder: "tag", class: "form-control input-md" %>
-  <%= f.submit "create", class: "btn btn-primary" %>
-  <%= f.hidden_field_tag @article %>
-<% end %>
+<div>
+  <% form_for([@article, @tag]) do |f| %>
+    <%= f.text_field :label, placeholder: "tag", class: "form-control input-md" %>
+    <%= f.submit "create", class: "btn btn-primary" %>
+    <%= f.hidden_field_tag @article %>
+  <% end %>
+</div>

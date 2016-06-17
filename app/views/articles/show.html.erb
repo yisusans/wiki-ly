@@ -1,5 +1,5 @@
 <h2><%= @article.title %></h2>
-<%= link_to 'Back to Group',  
+<%= link_to 'Back to Group',
   		@group %>
 
 <br/>
@@ -10,19 +10,23 @@
 
 <% if logged_in? %>
 <% if  current_user.id == @article.writer_id %>
-    <%= link_to 'Destroy', 
-    	group_article_path(@group, @article), 
+    <%= link_to 'Destroy',
+    	group_article_path(@group, @article),
     	method: :delete,
 		data: { confirm: 'Last chance, still want to delete?'} %>
-  | <%= link_to 'Edit',  
+  | <%= link_to 'Edit',
   		edit_group_article_path(@group, @article) %>
 <%end%>
 
 
 <%= render 'favorites/favorite_form' %>
+
+<% if member_already? %>
+  <div id="article-show-tags-container">
+    <%= render '/tags/new_tag' %>
+    <%= render '/tags/tags' %>
+  </div>
+<% end %>
+
 <%end%>
 
-<div id="article-show-tags-container">
-  <%= render '/tags/new_tag' %>
-  <%= render '/tags/tags' %>
-</div>

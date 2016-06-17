@@ -1,0 +1,17 @@
+<h1><%=@tag.label%> </h1>
+
+<%= form_tag(tag_path, :method => "get", id: "search-form") do %>
+ <div class="form-inline">
+ <%= text_field_tag :search, params[:search], placeholder: "Search Articles", class: "form-control input-md" %>
+ <%= submit_tag "Search", class: "btn btn-primary" %>
+ <% end %>
+</div>
+
+<div>
+  <h3>Articles:</h3>
+  <ul>
+  <% @articles.each do |article| %>
+    <div class="tag-show-article-titles"><h4><%= link_to article.title, group_article_path(article.group, article) %></h4></div>
+  <% end %>
+  </ul>
+</div>

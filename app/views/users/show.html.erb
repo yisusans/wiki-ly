@@ -7,7 +7,7 @@
 
 <h4>Your articles:</h4>
 <% @user.articles.each do |article| %>
-  <div><%= article.title %></div>
+	<div><%= link_to article.title %></div>
 <% end %>
 
 

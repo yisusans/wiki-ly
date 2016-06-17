@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   post 'favorite_article' => 'favorites#create'
   delete 'unfavorite_article' => 'favorites#destroy'
-
+  put 'publish_article' => 'articles#publish'
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 

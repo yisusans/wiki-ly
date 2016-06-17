@@ -37,6 +37,8 @@ include ApplicationHelper
       @group_name = @group.name
       @users = @group.memberships
       @articles = @group.articles
+      @published = @articles.where(published: true)
+      @unpublished = @articles.where(published: false)
       render '/groups/show'
     else
       redirect_to '/'

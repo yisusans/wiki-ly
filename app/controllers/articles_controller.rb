@@ -63,6 +63,19 @@ include ApplicationHelper
     end
   end
 
+  def publish
+    @article = Article.find_by(id: params[:article_id])
+    if @article
+      @article.published = true
+      @article.save
+    else
+      redirect_to root_path
+    end
+
+    render plain: "OK"
+
+  end
+
   def destroy
     @article = Article.find_by(id: params[:id])
     @article.destroy
@@ -73,5 +86,4 @@ include ApplicationHelper
     def article_params
       params.require(:article).permit(:title, :body)
     end
-
 end

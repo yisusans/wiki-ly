@@ -1,2 +1,26 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+
+<h1 class="wiki">Wiki-Ly</h1>
+<h5 class="wiki-desc">The best wiki generator on the web!</h5>
+
+<div class="jumbotron">
+  <div id="container"> 
+    <h1>Featured Articles:</h1>
+    <p class="feature-desc">A curated list of daily articles from a variety of wikis.</p>
+    <p><a class="btn btn-primary btn-lg" href="" role="button">More Articles</a></p>
+  </div>
+</div>
+  <div id="container"> 
+    <div class="row">
+      <% @articles.each do |article| %>
+          <div class="col-md-4">
+            <h2 class="article-title"><%= article.title %>
+            <p class="max-lines"><%= article.body %></p>
+            <a class="btn btn-default" href="#" role="button">Full article</a>
+            <a></a>
+          </div> 
+      <% end %>
+    </div>
+  </div>
+
+
+

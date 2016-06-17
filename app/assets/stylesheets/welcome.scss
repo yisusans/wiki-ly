@@ -1,3 +1,75 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.fa fa-file-text {
+  
+}
+
+.max-lines {
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 7.4em;
+  font-style: normal;
+  margin-top: 10px; 
+  color: #595959;
+  font-size: 17px;
+  font-weight: 100;
+}
+
+.article-title {
+  font-size: 1.3em;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.wiki {
+  font-weight: 900;
+  color: #ff8533;
+  font-size: 3.5em;
+}
+
+.wiki-desc {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  padding-left: 8px;
+}
+
+
+
+/* nav styling */
+
+.nav {
+  -webkit-box-shadow: 0px 11px 13px -4px rgba(173,168,173,0.28);
+  -moz-box-shadow: 0px 11px 13px -4px rgba(173,168,173,0.28);
+  box-shadow: 0px 11px 13px -4px rgba(173,168,173,0.28);
+}
+
+ul {
+  list-style-type: none;
+}
+
+.nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #428bca;
+  height: 50px;
+  color: white;
+}
+
+.nav-links li {
+  float: right;
+  padding-top: 15px;
+  padding-left: 6px;
+  font-size: 1em;
+}
+
+
+.nav a {
+  color: white;
+  text-align: center;
+  padding: 6px;
+}

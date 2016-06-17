@@ -1,0 +1,4 @@
+<h2>Articles: </h2>
+<% @articles.each do |article| %>
+<div><%= link_to article.title, "/groups/#{article.group_id}/articles/#{article.id}" %></div>
+<% end %>

@@ -1,10 +1,12 @@
-
 <section class="title-and-bookmark">
   <div><h2 class="article-title"><%= @article.title %></h2></div>
   <div class="bookmark-container"><%= render partial:'favorites/favorite_form' %></div>
 </section>
 
 <%= link_to 'Back to Group',  
+
+<h2><%= @article.title %></h2>
+<%= link_to 'Back to Group',
   		@group %>
 
 <br/>
@@ -15,16 +17,23 @@
 
 <% if logged_in? %>
 <% if  current_user.id == @article.writer_id %>
-    <%= link_to 'Destroy', 
-    	group_article_path(@group, @article), 
+    <%= link_to 'Destroy',
+    	group_article_path(@group, @article),
     	method: :delete,
 		data: { confirm: 'Last chance, still want to delete?'} %>
-  | <%= link_to 'Edit',  
+  | <%= link_to 'Edit',
   		edit_group_article_path(@group, @article) %>
 <% end %>
 <% end %>
 
-<div id="article-show-tags-container">
-  <%= render '/tags/new_tag' %>
-  <%= render '/tags/tags' %>
-</div>
+
+
+<%= render 'favorites/favorite_form' %>
+
+<% if member_already? %>
+  <div id="article-show-tags-container">
+    <%= render '/tags/new_tag' %>
+    <%= render '/tags/tags' %>
+  </div>
+<% end %>
+

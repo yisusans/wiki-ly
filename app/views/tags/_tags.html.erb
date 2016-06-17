@@ -1,7 +1,7 @@
 <div class="all-tags">
   <% if @tags %>
     <% @tags.each do |tag| %>
-      <span class="article-show-tag"> <%= tag.label %> </span>
+      <span class="article-show-tag"> <%= link_to tag.label, tag_path(tag) %> </span>
     <% end %>
   <% end %>
 </div>

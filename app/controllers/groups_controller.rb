@@ -37,7 +37,7 @@ include ApplicationHelper
       @group_name = @group.name
       @users = @group.memberships
       @articles = @group.articles
-      @published = @articles.where(published: true)
+      @published = @articles.where(published: true).reverse
       @unpublished = @articles.where(published: false)
       render '/groups/show'
     else

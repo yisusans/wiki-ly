@@ -65,14 +65,16 @@ include ApplicationHelper
 
   def publish
     @article = Article.find_by(id: params[:article_id])
+    @group = @article.group
     if @article
       @article.published = true
       @article.save
+      if request.xhr?
+        render partial: "/articles/article", locals: {article: @article}
+      end
     else
       redirect_to root_path
     end
-
-    render plain: "OK"
 
   end
 

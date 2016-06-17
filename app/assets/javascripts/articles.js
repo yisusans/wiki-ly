@@ -9,12 +9,12 @@ $(document).ready(function(){
 			method: "put",
 			url: $target.parent().attr("action"),
 			data: $target.parent().serialize(),
-			dataType: "script"
 		});
 
-		request.done(function(){
-			
+		request.done(function( msg ){
+			$(".article-published").append(msg)
+			$target.parent().parent().remove()
 		});
 
-	}); // end of radio request
-}); //end of document ready
+	});
+}); 

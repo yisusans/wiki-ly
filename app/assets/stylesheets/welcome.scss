@@ -13,12 +13,56 @@
   max-height: 7.4em;
   font-style: normal;
   margin-top: 10px; 
-  color: #8c8c8c;
+  color: #595959;
   font-size: 17px;
   font-weight: 100;
 }
 
 .article-title {
   font-size: 1.3em;
+  font-weight: 800;
   font-style: italic;
+}
+
+.wiki {
+  font-weight: 900;
+  color: #ff8533;
+  font-size: 3.5em;
+}
+
+.wiki-desc {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  padding-left: 8px;
+}
+
+
+/* nav styling */
+
+ul {
+  list-style-type: none;
+}
+
+.nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #428bca;
+  height: 50px;
+}
+
+.nav li {
+  float: right;
+  color: white;
+}
+
+
+
+.nav li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }

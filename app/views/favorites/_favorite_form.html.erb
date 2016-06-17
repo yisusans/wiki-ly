@@ -7,7 +7,7 @@
   <% else %>
   <%= form_tag favorite_article_path, method: :create, :html => {class: "favorite-form"} do |f| %>
     <%= hidden_field_tag :article_id, @article.id %>
-  <button class="fave-button"><i class="fa fa-bookmark-o" class="bookmark" aria-hidden="true"></i></button>
+  <button class="fave-button"><i class="fa fa-bookmark" class="bookmark" aria-hidden="true"></i></button>
     <%end%>
 <% end %>
     

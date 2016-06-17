@@ -13,6 +13,7 @@ include ApplicationHelper
   end
 
   def create
+    puts "I'm actually over here! "
     @article = Article.new(article_params)
     @group = Group.find(params[:group_id])
     @article.writer_id = current_user.id
@@ -26,6 +27,7 @@ include ApplicationHelper
   end
 
   def show
+    @section = Section.new
     @tag = Tag.new
     @article = Article.find_by(id: params[:id])
     @tags = @article.tags

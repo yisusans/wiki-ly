@@ -5,11 +5,17 @@ class SectionsController < ApplicationController
   end
 
   def create
-    @article = Article.find_by(id: params[:id])
-    @section = @article.sections.new(section_params)
+    @article = Article.find_by(id: params[:article_id])
+    @section = Section.new(section_params)
     if @section.save
-      redirect_to @article
+      puts "*" * 25
+      puts "I've been saved"
+      puts "*" * 25
+      redirect_to [@article.group, @article]
     else
+      puts "*" * 25
+      puts "I have not been saved"
+      puts "*" * 25
       @errors = @section.errors.full_messages
       render "/articles/#{@article.id}"
     end

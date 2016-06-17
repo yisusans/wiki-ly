@@ -3,12 +3,12 @@
 
 <div class="row">
   <div class="col-md-6 col-md">
-    <%= form_for(:section) do |f| %>
-
-      <%= f.text_field :subtitle, placeholder: "subtitle" %>
-      <%= f.text_field :body, placeholder: "body" %>
-      <%= f.submit "create" %>
-
+    <%= form_tag @section do %>
+    <%= hidden_field_tag :article_id, @article.id %>
+      <%= text_field_tag :subtitle %>
+      <%= text_field_tag :body %>
+      <%= submit_tag "create" %>
     <% end %>
+
   </div>
 </div>

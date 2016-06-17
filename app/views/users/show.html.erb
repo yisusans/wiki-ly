@@ -12,7 +12,7 @@
 
 
 <h4>Favorites:</h4>
-<% @user.favorites.each do |favorite| %>
-  <div><%= favorite.article %></div>
+<% @user.favorited_articles.each do |article| %>
+  <div> <%= link_to article.title, "/groups/#{article.group_id}/articles/#{article.id}" %> </div>
 <% end %>
 

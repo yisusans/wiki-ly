@@ -10,6 +10,11 @@
 <div id="article-author">Added by:</div>
 <div><%=@article.writer.username %></div>
 
+<% if  current_user.id == @article.writer_id %>
+  <%= link_to 'Destroy', group_article_path(@group, @article), method: :delete %><br>
+  <%= link_to 'Edit',  edit_group_article_path(@group, @article)%>
+<%end%>
+
 
 <%= render 'favorites/favorite_form' %>
 

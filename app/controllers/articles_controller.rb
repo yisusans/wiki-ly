@@ -2,14 +2,22 @@ class ArticlesController < ApplicationController
 
 include ApplicationHelper
 
+  def index
+    @articles = Article.all
+    if params[:search]
+      search = params[:search].downcase
+      capitalize_search = search.capitalize
+      @articles = Article.search(capitalize_search).order("created_at DESC")
+   else
+      @articles = Article.all.order('created_at DESC')
+    end
+  end
 
   def new
     @article = Article.new
-    @section = Section.new
     @group = Group.find(params[:group_id])
     @article.writer_id = current_user.id
     @article.group_id = @group.id
-    @article.sections << @section
   end
 
   def create
@@ -20,7 +28,7 @@ include ApplicationHelper
     if @article.save
        render '/articles/show'
     else
-      @errors = @article.errors.full_messages
+      flash[:errors] = @article.errors.full_messages
       redirect_to @group
     end
   end
@@ -30,7 +38,6 @@ include ApplicationHelper
     @article = Article.find_by(id: params[:id])
     @tags = @article.tags
     @user = @article.writer.username
-    # @favorite = @article.favorites.find_by(user_id: current_user.id, article_id: params[:favorite][:article_id])
     @group = Group.find_by(id: params[:group_id])
 
     if @article
@@ -46,7 +53,14 @@ include ApplicationHelper
   end
 
   def update
-    # @article.update(params)
+    @article = Article.find(params[:id])
+    @group = @article.group
+
+    if @article.update(article_params)
+      redirect_to [@group, @article]
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -57,11 +71,7 @@ include ApplicationHelper
 
   private
     def article_params
-      params.require(:article).permit(:title, :bibliography)
-    end
-
-    def section_params
-      params.require(:article).permit(:title, :bibliography, section_attributes: [:subtitle, :body])
+      params.require(:article).permit(:title, :body)
     end
 
 end

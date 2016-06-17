@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   validates :email, :username, :password, presence: true, on: :update
   validates :email, :username, uniqueness: true, on: :create
   validates :email, :username, uniqueness: true, on: :update
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
+  
 
   has_many :articles, {foreign_key: :writer_id}
   has_many :memberships

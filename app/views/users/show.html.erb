@@ -2,12 +2,12 @@
 
 <h4>Your groups:</h4>
 <% @user.groups.each do |group| %>
-<div><%= link_to group.name, group_path(group) %></div>
+<div><%= link_to group.name, group %></div>
 <% end %>
 
 <h4>Your articles:</h4>
 <% @user.articles.each do |article| %>
-  <div><%= article.title %></div>
+	<div><%= link_to article.title, "/groups/#{article.group_id}/articles/#{article.id}" %></div>
 <% end %>
 
 

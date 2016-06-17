@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-
+  resources :articles, only: [:index]
   resources :users, :except => [:index]
   resources :groups do
-    resources :articles do
+    resources :articles, except: [:index] do
       resources :tags, :only => [:create]
     end
   end
@@ -19,7 +19,6 @@ Rails.application.routes.draw do
 
   resources :tags, :only => [:show]
 
-  resources :sections, :except => [:index, :show]
 
   resources :footnotes, :except => [:index, :show]
 

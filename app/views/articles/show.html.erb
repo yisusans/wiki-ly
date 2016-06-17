@@ -1,22 +1,26 @@
 <h2><%= @article.title %></h2>
+<%= link_to 'Back to Group',  
+  		@group %>
 
-<% @article.sections.each do |section| %>
-  <h4><%= section.subtitle %></h4>
-  <div><%= section.body %></div>
-<% end %>
-
-<div><%= @article.bibliography %></div>
-
+<br/>
+<div><%= @article.body %></div>
 <div id="article-author">Added by:</div>
-<div><%=@article.writer.username %></div>
+<div><%= link_to @article.writer.username,
+		 user_path(@article.writer_id) %></div>
 
+<% if logged_in? %>
 <% if  current_user.id == @article.writer_id %>
-  <%= link_to 'Destroy', group_article_path(@group, @article), method: :delete %><br>
-  <%= link_to 'Edit',  edit_group_article_path(@group, @article)%>
+    <%= link_to 'Destroy', 
+    	group_article_path(@group, @article), 
+    	method: :delete,
+		data: { confirm: 'Last chance, still want to delete?'} %>
+  | <%= link_to 'Edit',  
+  		edit_group_article_path(@group, @article) %>
 <%end%>
 
 
 <%= render 'favorites/favorite_form' %>
+<%end%>
 
 <div id="article-show-tags-container">
   <%= render '/tags/new_tag' %>

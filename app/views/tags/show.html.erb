@@ -1,0 +1,10 @@
+<h1><%=@tag.label%> </h1>
+
+<div>
+  <h3>Articles:</h3>
+  <ul>
+  <% @articles.each do |article| %>
+    <div class="tag-show-article-titles"><h4><%= link_to article.title, group_article_path(article.group, article) %></h4></div>
+  <% end %>
+  </ul>
+</div>

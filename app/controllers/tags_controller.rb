@@ -13,9 +13,10 @@ class TagsController < ApplicationController
   end
 
 
-  # def show
-  #   @articles = Article.where(tag_id: params[:id])
-  # end
+  def show
+    @tag = Tag.find_by(id: params[:id])
+    @articles = Article.where(tag_id: params[:id])
+  end
 
 
 end

@@ -6,6 +6,18 @@
   
 }
 
+.jumbotron {
+  background-image: url(../gg.jpg);
+}
+
+#featured-article {
+  color: #ffffff;
+}
+
+.feature-desc {
+  color: white;
+}
+
 .max-lines {
   text-overflow: ellipsis;
   word-wrap: break-word;
@@ -26,7 +38,7 @@
 
 .wiki {
   font-weight: 900;
-  color: #ff8533;
+  color: #8800cc;
   font-size: 3.5em;
 }
 

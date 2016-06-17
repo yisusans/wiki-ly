@@ -3,8 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #article-show-tags-container {
-  width: 430px;
+  width: 280px;
   padding: 10px;
+  float: right;
+  position: relative;
 }
 
 
@@ -13,14 +15,14 @@ padding-left: 6px;
 }
 
 .all-tags {
-  width: 300px;
+  width: 250px;
   margin: 2px;
   padding: 1px;
 }
 
 .article-show-tag {
   border: 1px solid grey;
-  font-size: 16px;
+  font-size: 13px;
   margin: 3px;
   line-height: 2;
   padding: 2px;
@@ -30,7 +32,7 @@ padding-left: 6px;
 }
 
 #tag-form-field {
-  width: 200px;
+  width: 150px;
   display: inline-block;
 
 }

@@ -16,8 +16,10 @@ $(document).ready(function() {
 
       reqObj.done(function(response){
     debugger
-      $target.parent().parent().find('.all-tags').append(response),
+    if (response !== "{}") {
+      $target.parent().parent().find('.all-tags').html(response),
       $target[0].reset()
+    }
     });
 
       reqObj.fail(function(response){

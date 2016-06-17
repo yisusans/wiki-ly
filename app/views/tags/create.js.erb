@@ -1,0 +1,3 @@
+<% @tags.each do |tag| %>
+  <span class="article-show-tag"> <%= link_to tag.label, tag_path(tag) %> </span>
+<% end %>

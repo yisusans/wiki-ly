@@ -3,11 +3,9 @@
   <div class="bookmark-container"><%= render partial:'favorites/favorite_form' %></div>
 </section>
 
-<%= link_to 'Back to Group',  
+<%= link_to 'Back to Group', @group %>  
 
 <h2><%= @article.title %></h2>
-<%= link_to 'Back to Group',
-  		@group %>
 
 <br/>
 <div><%= @article.body %></div>
@@ -26,9 +24,6 @@
 <% end %>
 <% end %>
 
-
-
-<%= render 'favorites/favorite_form' %>
 
 <% if member_already? %>
   <div id="article-show-tags-container">

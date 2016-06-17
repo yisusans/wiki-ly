@@ -20,7 +20,8 @@
 
 <h3>Articles:</h3>
 <% @articles.each do |article| %>
-  <p><%= article.title %></p>
+  <p><%= link_to article.title, [@group, article] %></p>
+
 <% end %>
 
 <% if flash %>

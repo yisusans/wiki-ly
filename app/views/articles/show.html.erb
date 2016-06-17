@@ -13,6 +13,7 @@
 <div><%= link_to @article.writer.username,
 		 user_path(@article.writer_id) %></div>
 
+<% if logged_in? %>
 <% if  current_user.id == @article.writer_id %>
     <%= link_to 'Destroy', 
     	group_article_path(@group, @article), 
@@ -20,8 +21,8 @@
 		data: { confirm: 'Last chance, still want to delete?'} %>
   | <%= link_to 'Edit',  
   		edit_group_article_path(@group, @article) %>
-<%end%>
-
+<% end %>
+<% end %>
 
 <div id="article-show-tags-container">
   <%= render '/tags/new_tag' %>

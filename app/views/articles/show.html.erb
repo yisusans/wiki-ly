@@ -6,8 +6,9 @@
 <div><%=@article.writer.username %></div>
 
 <% if  current_user.id == @article.writer_id %>
-  <%= link_to 'Destroy', group_article_path(@group, @article), method: :delete %><br>
-  <%= link_to 'Edit',  edit_group_article_path(@group, @article)%>
+    <%= link_to 'Destroy', group_article_path(@group, @article), method: :delete,
+    															 data: { confirm: 'Last chance, still want to delete?'}%>
+  | <%= link_to 'Edit',  edit_group_article_path(@group, @article)%>
 <%end%>
 
 

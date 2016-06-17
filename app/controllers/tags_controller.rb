@@ -23,6 +23,7 @@ class TagsController < ApplicationController
       if @tag.valid?
         @designation = Designation.create(tag_id: @tag.id, article_id: @article.id)
       end
+        render 'tags/'
     else
       flash[:error] = @tag.errors.full_messages
     end

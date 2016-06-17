@@ -15,15 +15,18 @@ class TagsController < ApplicationController
   end
 
   def create
-    @tag = Tag.find_or_create_by(label: params[:label])
-    @article = Article.find_by(id: params[:article_id])
-    if @tag.valid?
-      @designation = Designation.create(tag_id: @tag.id, article_id: @article.id)
-      redirect_to group_article_path(@article.group, @article)
+      @tag = Tag.new
+      @article = Article.find_by(id: params[:article_id])
+      @group = @article.group
+    if params[:label].length > 0
+      @tag = Tag.find_or_create_by(label: params[:label])
+      if @tag.valid?
+        @designation = Designation.create(tag_id: @tag.id, article_id: @article.id)
+      end
     else
-      @errors = @tags.errors.full_messages
-      render 'tags/new/'
+      flash[:error] = @tag.errors.full_messages
     end
+      redirect_to [@group, @article]
   end
 
 end

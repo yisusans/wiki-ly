@@ -53,7 +53,14 @@ include ApplicationHelper
   end
 
   def update
-    # @article.update(params)
+    @article = Article.find(params[:id])
+    @group = @article.group
+
+    if @article.update(article_params)
+      redirect_to [@group, @article]
+    else
+      render 'edit'
+    end
   end
 
   def destroy

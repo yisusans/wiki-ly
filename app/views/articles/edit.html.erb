@@ -1,0 +1,21 @@
+<%= form_for [@group, @article] do |f| %>
+ 
+  <div>
+    <%= f.label :title %>:<br>
+    <%= f.text_field :title, 
+                     class: "form-control" %>
+  </div>
+ 
+  <div>
+    <%= f.label :body %>:<br>
+    <%= f.text_area :body, 
+                    class: "form-control",
+                    rows: "15",
+                    id: "comment" %>
+  </div>
+ 
+  <div>
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+ 
+<% end %>

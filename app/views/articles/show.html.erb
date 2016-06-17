@@ -1,14 +1,21 @@
 <h2><%= @article.title %></h2>
+<%= link_to 'Back to Group',  
+  		@group %>
 
+<br/>
 <div><%= @article.body %></div>
-
 <div id="article-author">Added by:</div>
-<div><%=@article.writer.username %></div>
+<div><%= link_to @article.writer.username,
+		 user_path(@article.writer_id) %></div>
+
 
 <% if  current_user.id == @article.writer_id %>
-    <%= link_to 'Destroy', group_article_path(@group, @article), method: :delete,
-    															 data: { confirm: 'Last chance, still want to delete?'}%>
-  | <%= link_to 'Edit',  edit_group_article_path(@group, @article)%>
+    <%= link_to 'Destroy', 
+    	group_article_path(@group, @article), 
+    	method: :delete,
+		data: { confirm: 'Last chance, still want to delete?'} %>
+  | <%= link_to 'Edit',  
+  		edit_group_article_path(@group, @article) %>
 <%end%>
 
 

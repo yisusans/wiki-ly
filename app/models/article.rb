@@ -11,4 +11,10 @@ class Article < ActiveRecord::Base
     !!self.favorites.find_by(user_id: current_user.id)
   end
 
+  # def is_favorited?
+  #   self.user.favorites.select do |favorite|
+  #     favorite.where(user_id == current_user.id && article_id == @article.id)
+  #   end
+  # end
+
 end

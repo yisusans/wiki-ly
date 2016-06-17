@@ -11,16 +11,5 @@
 <div><%=@article.writer.username %></div>
 
 
-<% if @article.is_favorited?(current_user) %>
-  <%= form_tag unfavorite_article_path, method: :delete, :html => {class:"filled-in-fave"} do |f| %>
-    <%= hidden_field_tag :article_id, @article.id %>
-  <button class="favoriting-button"><i class="fa fa-bookmark-o" class="bookmark" aria-hidden="true"></i></button>
-    <% end %>
-
-  <% else %>
-  <%= form_tag favorite_article_path, method: :create, :html => {class:"unfilled-fave"} do |f| %>
-    <%= hidden_field_tag :article_id, @article.id %>
-  <button class="favoriting-button"><i class="fa fa-bookmark-o" class="bookmark" aria-hidden="true"></i></button>
-    <%end%>
-<% end %>
+<%= render 'favorites/favorite_form' %>
     

@@ -17,13 +17,13 @@ ActiveRecord::Schema.define(version: 20160615160945) do
   enable_extension "plpgsql"
 
   create_table "articles", force: :cascade do |t|
-    t.string   "title",                                null: false
-    t.string   "bibliography",                         null: false
-    t.string   "state",        default: "unpublished", null: false
-    t.integer  "writer_id",                            null: false
-    t.integer  "group_id",                             null: false
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.string   "title",                      null: false
+    t.string   "body",                       null: false
+    t.boolean  "published",  default: false
+    t.integer  "writer_id",                  null: false
+    t.integer  "group_id",                   null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "designations", force: :cascade do |t|
@@ -33,25 +33,9 @@ ActiveRecord::Schema.define(version: 20160615160945) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "edits", force: :cascade do |t|
-    t.string   "revision"
-    t.integer  "editor_id"
-    t.integer  "article_id"
-    t.integer  "section_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "favorites", force: :cascade do |t|
     t.integer  "article_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "footnotes", force: :cascade do |t|
-    t.string   "body"
-    t.integer  "section_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -66,14 +50,6 @@ ActiveRecord::Schema.define(version: 20160615160945) do
     t.integer  "group_id",   null: false
     t.integer  "user_id",    null: false
     t.string   "role",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "sections", force: :cascade do |t|
-    t.string   "subtitle"
-    t.string   "body"
-    t.integer  "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

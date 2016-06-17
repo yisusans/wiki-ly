@@ -19,7 +19,6 @@ Rails.application.routes.draw do
 
   resources :tags, :only => [:show]
 
-  resources :sections, :except => [:index, :show]
 
   resources :footnotes, :except => [:index, :show]
 

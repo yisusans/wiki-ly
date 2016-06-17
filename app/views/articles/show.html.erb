@@ -1,11 +1,6 @@
 <h2><%= @article.title %></h2>
 
-<% @article.sections.each do |section| %>
-  <h4><%= section.subtitle %></h4>
-  <div><%= section.body %></div>
-<% end %>
-
-<div><%= @article.bibliography %></div>
+<div><%= @article.body %></div>
 
 <div id="article-author">Added by:</div>
 <div><%=@article.writer.username %></div>

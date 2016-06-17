@@ -3,27 +3,25 @@
   <div class="bookmark-container"><%= render partial:'favorites/favorite_form' %></div>
 </section>
 
-<%= link_to 'Back to Group', @group %>  
-
-<h2><%= @article.title %></h2>
 
 <br/>
-<div><%= @article.body %></div>
+<div><p class="article-body"><%= @article.body %><p></div>
 <div id="article-author">Added by:</div>
 <div><%= link_to @article.writer.username,
-		 user_path(@article.writer_id) %></div>
+     user_path(@article.writer_id) %></div>
 
 <% if logged_in? %>
 <% if  current_user.id == @article.writer_id %>
     <%= link_to 'Destroy',
-    	group_article_path(@group, @article),
-    	method: :delete,
-		data: { confirm: 'Last chance, still want to delete?'} %>
+      group_article_path(@group, @article),
+      method: :delete,
+    data: { confirm: 'Last chance, still want to delete?'} %>
   | <%= link_to 'Edit',
-  		edit_group_article_path(@group, @article) %>
+      edit_group_article_path(@group, @article) %>
 <% end %>
 <% end %>
 
+<%= link_to 'Back to Group', @group %>  
 
 <% if member_already? %>
   <div id="article-show-tags-container">

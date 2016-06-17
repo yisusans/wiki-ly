@@ -18,7 +18,6 @@
   <p><%= link_to member.user.username, user_path(member.user) %>, <%= member.role %></p>
 <%end%>
 
-<h3>Articles:</h3>
 <% if logged_in? %>
   <% if admin? %>
     <% @unpublished.each do |unpublished| %>
@@ -27,6 +26,7 @@
   <% end %>
 <% end %>
 
+<h3>Articles:</h3>
 <% @published.each do |article| %>
   <p><%= link_to article.title, [@group, article] %></p>
 <% end %>

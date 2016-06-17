@@ -8,20 +8,18 @@
 </head>
 <body>
   <nav class="nav">
-
-  <ul>
-    | <%= link_to "Home", root_path %>
-    | <%= link_to "Groups", groups_path %>
-    | <%= link_to "Articles", articles_path %>
-  <% if logged_in? %>
-    | <%= link_to "Create a Group", new_group_path %>
-    | <%= link_to current_user.username, user_path(:id => current_user.id) %>
-    | <%= link_to "Log out", logout_path, method: :delete %>
-  <% else %>
-    | <%= link_to "Login", login_path%>
-    | <%= link_to "Register", new_user_path%>
-  <% end %>
-
+    <ul class="nav-links">
+      <li>| <%= link_to "Home", root_path %></li>
+      <li>| <%= link_to "Groups", groups_path %></li>
+      <li>| <%= link_to "Articles", articles_path %></li>
+    <% if logged_in? %>
+      <li>| <%= link_to "Create a Group", new_group_path %></li>
+      <li>| <%= link_to current_user.username, user_path(:id => current_user.id)%></li>
+      <li>| <%= link_to "Log out", logout_path, method: :delete %>
+    <% else %>
+      <li>| <%= link_to "Login", login_path%></li>
+      <li>| <%= link_to "Register", new_user_path%></li>
+    <% end %>
     </ul>
     </nav>
 <div class="container">

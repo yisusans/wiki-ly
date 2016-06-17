@@ -37,7 +37,14 @@
 }
 
 
+
 /* nav styling */
+
+.nav {
+  -webkit-box-shadow: 0px 11px 13px -4px rgba(173,168,173,0.28);
+  -moz-box-shadow: 0px 11px 13px -4px rgba(173,168,173,0.28);
+  box-shadow: 0px 11px 13px -4px rgba(173,168,173,0.28);
+}
 
 ul {
   list-style-type: none;
@@ -50,19 +57,19 @@ ul {
   overflow: hidden;
   background-color: #428bca;
   height: 50px;
-}
-
-.nav li {
-  float: right;
   color: white;
 }
 
+.nav-links li {
+  float: right;
+  padding-top: 15px;
+  padding-left: 6px;
+  font-size: 1em;
+}
 
 
-.nav li a {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+.nav a {
+  color: white;
+  text-align: center;
+  padding: 6px;
 }

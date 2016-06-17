@@ -1,5 +1,12 @@
 <h2>Articles: </h2>
 
+<%= form_tag(articles_path, :method => "get", id: "search-form") do %>
+ <div class="form-inline">
+ <%= text_field_tag :search, params[:search], placeholder: "Search Articles", class: "form-control input-md" %>
+ <%= submit_tag "Search", class: "btn btn-primary" %>
+ <% end %>
+</div>
+<br>
 <% @articles.each do |article| %>
 	<div><%= link_to article.title, "/groups/#{article.group_id}/articles/#{article.id}" %></div>
 <% end %>

@@ -13,5 +13,9 @@ class Article < ActiveRecord::Base
     !!self.favorites.find_by(user_id: current_user.id)
   end
 
+  def self.search(search)
+    where("LOWER(title) LIKE LOWER(?)", "%#{search}%")
+    where("LOWER(body) LIKE LOWER(?)", "%#{search}%")
+  end
 
 end

@@ -4,6 +4,13 @@ include ApplicationHelper
 
   def index
     @articles = Article.all
+    if params[:search]
+      search = params[:search].downcase
+      capitalize_search = search.capitalize
+      @articles = Article.search(capitalize_search).order("created_at DESC")
+   else
+      @articles = Article.all.order('created_at DESC')
+    end
   end
 
   def new

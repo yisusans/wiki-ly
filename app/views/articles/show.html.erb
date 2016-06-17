@@ -1,4 +1,9 @@
-<h2><%= @article.title %></h2>
+
+<section class="title-and-bookmark">
+  <div><h2 class="article-title"><%= @article.title %></h2></div>
+  <div class="bookmark"><%= render partial:'favorites/favorite_form' %></div>
+</section>
+
 <%= link_to 'Back to Group',  
   		@group %>
 
@@ -8,7 +13,6 @@
 <div><%= link_to @article.writer.username,
 		 user_path(@article.writer_id) %></div>
 
-<% if logged_in? %>
 <% if  current_user.id == @article.writer_id %>
     <%= link_to 'Destroy', 
     	group_article_path(@group, @article), 
@@ -18,9 +22,6 @@
   		edit_group_article_path(@group, @article) %>
 <%end%>
 
-
-<%= render 'favorites/favorite_form' %>
-<%end%>
 
 <div id="article-show-tags-container">
   <%= render '/tags/new_tag' %>

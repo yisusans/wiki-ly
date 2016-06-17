@@ -7,7 +7,7 @@
     <%= link_to 'delete group', group_path(@group),
             method: :delete,
             data: { confirm: 'Are you sure?'} %>
-    <p><%= link_to 'add article', new_group_article_path(@group) %></p>
+    | <%= link_to 'add article', new_group_article_path(@group) %>
   <% elsif !member_already? %>
     <p><%= link_to 'add article', new_group_article_path(@group) %></p>
   <% end %>

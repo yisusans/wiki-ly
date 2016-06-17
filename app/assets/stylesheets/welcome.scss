@@ -1,3 +1,22 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.fa fa-file-text {
+  
+}
+
+.max-lines {
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 7.4em;
+  font-style: italic;
+  margin-top: 10px; 
+  color: #a6a6a6;
+  font-size: 17px;
+}
+
+.article-title {
+  font-size: 1.3em;
+}

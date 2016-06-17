@@ -8,6 +8,10 @@
 </head>
 <body>
   <nav class="navbar navbar-default">
+    <i class="fa fa-file-text" aria-hidden="true" style="font-size:50px;"></i>
+    <h1>Wiki-Ly</h1>
+    <h5>The best wiki generator on the web!</h5>
+  </div>
   <ul>
   <% if logged_in? %>
     <%= link_to current_user.username, user_path(:id => current_user.id) %>
@@ -22,13 +26,16 @@
     | <%= link_to "Articles", articles_path %>
     </ul>
     </nav>
-
 <div class="container">
     <% if notice %>
       <%= notice %>
     <% end %>
 <%= yield %>
 </div>
+    <div class="container">
+      <hr>
+      <footer><p>2016 &copy; Wiki-Ly</p></footer>
+    </div>
 
 </body>
 </html>

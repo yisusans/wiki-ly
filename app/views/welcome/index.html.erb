@@ -15,7 +15,9 @@
           <div class="col-md-4">
             <h2 class="article-title"><%= article.title %>
             <p class="max-lines"><%= article.body %></p>
-            <a class="btn btn-default" href="#" role="button">Full article</a>
+            <%= button_to "Full Article",
+              group_article_path(article.group, article),
+              method: :get, class: "btn btn-default" %>
             <a></a>
           </div> 
       <% end %>

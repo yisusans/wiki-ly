@@ -1,0 +1,5 @@
+<%= form_tag publish_article_path, {:class => 'publish'} do %>
+	<%= hidden_field_tag(:article_id, unpublished.id) %>
+	<%= radio_button_tag(:published, true)%>	
+	<%= label_tag(:article, " Publish?") %>
+<% end %>

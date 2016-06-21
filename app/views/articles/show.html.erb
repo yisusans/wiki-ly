@@ -1,6 +1,8 @@
 <section class="title-and-bookmark">
   <div><h2 class="article-title"><%= @article.title %></h2></div>
-  <div class="bookmark-container"><%= render partial:'favorites/favorite_form' %></div>
+  <% if logged_in? %>
+    <div class="bookmark-container"><%= render partial:'favorites/favorite_form' %></div>
+  <%end%>
 </section>
 
 
@@ -23,7 +25,7 @@
 
 <%= link_to 'Back to Group', @group %>  
 
-<% if member_already? %>
+<% if current_user && member_already? %>
   <div id="article-show-tags-container">
     <%= render '/tags/new_tag' %>
     <%= render '/tags/tags' %>

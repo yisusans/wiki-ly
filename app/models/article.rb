@@ -18,4 +18,8 @@ class Article < ActiveRecord::Base
     where("LOWER(body) LIKE LOWER(?)", "%#{search}%")
   end
 
+  def self.published?
+    self.published
+  end
+
 end

@@ -1,0 +1,16 @@
+<section class="title-and-bookmark">
+  <div><h2 class="article-title">Tags</h2></div>
+</section>
+
+
+<%= form_tag(tags_path, :method => "get", id: "search-form") do %>
+ <div class="form-inline">
+ <%= text_field_tag :search, params[:search], placeholder: "Search Groups", class: "form-control input-md" %>
+ <%= submit_tag "Search", class: "btn btn-primary" %>
+ <% end %>
+
+<div id="link-ord">
+<% @tags.each do |tag| %>
+	<div><%= link_to tag.label, tag %></div>	
+<% end %>
+	

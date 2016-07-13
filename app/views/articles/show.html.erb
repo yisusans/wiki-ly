@@ -1,6 +1,6 @@
 <section class="title-and-bookmark">
   <div><h2 class="article-title"><%= @article.title %></h2></div>
-  <% if logged_in? %>
+  <% if logged_in? &&  @article.published? %>
     <div class="bookmark-container"><%= render partial:'favorites/favorite_form' %></div>
   <%end%>
 </section>

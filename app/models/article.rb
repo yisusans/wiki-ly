@@ -14,8 +14,11 @@ class Article < ActiveRecord::Base
   end
 
   def self.search(search)
-    where("LOWER(title) LIKE LOWER(?)", "%#{search}%")
-    where("LOWER(body) LIKE LOWER(?)", "%#{search}%")
+    where("LOWER(title) LIKE LOWER(?)", "%#{search}%") || where("LOWER(body) LIKE LOWER(?)", "%#{search}%")
+  end
+
+  def self.published?
+    self.published
   end
 
 end

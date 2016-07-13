@@ -42,7 +42,7 @@ group :development, :test do
   gem "factory_girl_rails", "~> 4.0"
   gem 'capybara'
   gem 'rspec-rails'
-  gem 'sqlite3'
+  gem 'pg'
 end
 
 group :production do

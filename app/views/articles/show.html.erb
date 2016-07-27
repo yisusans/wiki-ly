@@ -24,13 +24,13 @@
 <% end %>
 
 <div>
-<%= link_to 'Back to Group', @group %>  
+<%= link_to 'Back to Group', @group %>
 </div>
 
-<% if current_user && member_already? %>
-  <div id="article-show-tags-container">
+<div id="article-show-tags-container">
+  <% if current_user && member_already? %>
     <%= render '/tags/new_tag' %>
-    <%= render '/tags/tags' %>
-  </div>
-<% end %>
+  <% end %>
+  <%= render '/tags/tags' %>
+</div>
 

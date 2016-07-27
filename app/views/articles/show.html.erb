@@ -28,7 +28,7 @@
 </div>
 
 <div id="article-show-tags-container">
-  <% if current_user && member_already? %>
+  <% if logged_in? %>
     <%= render '/tags/new_tag' %>
   <% end %>
   <%= render '/tags/tags' %>
